@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       {showPokemonApplication===false &&
-      <div>
+      <div className='start-container'>
         <div className='logo-container'>
           <img className='logo-img2' src={Logo2} alt='Pokemon'/>
           <img className='logo-img1' src={Logo1} alt='Pokeball'/>
