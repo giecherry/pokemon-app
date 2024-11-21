@@ -33,12 +33,26 @@ function PokemonApplication() {
                 const response = await fetch(selectedPokemonData.url);
                 const json = await response.json();
                 setPokemonInfo(json);
-                setShowPokemon(true); // Display the Pokémon info
+                setShowPokemon(true); 
             } catch (error) {
                 console.error("Failed to fetch Pokémon details:", error);
             }
         }
     };
+
+    const handleRandom = async () => {
+        const randomIndex = Math.floor(Math.random() * pokemons.length);
+        const randomPokemon = pokemons[randomIndex];
+        setSelectedPokemon(randomPokemon.name);
+        try {
+            const response = await fetch(randomPokemon.url);
+            const json = await response.json();
+            setPokemonInfo(json);
+            setShowPokemon(true);
+        } catch (error) {
+            console.error("Failed to fetch Pokémon details:", error);
+        }
+    }
 
     return (
         <>
@@ -52,7 +66,7 @@ function PokemonApplication() {
                 </select>
                 </div>
                 <button onClick={handleClick}>Show</button>
-                <button>Random</button>
+                <button onClick={handleRandom}>Random</button>
             </div>
             {showPokemon && pokemonInfo && <Pokemon pokemonInfo={pokemonInfo} />}
         </div>
