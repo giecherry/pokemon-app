@@ -45,10 +45,10 @@ function Pokemon({pokemonInfo}) {
                         <img className="pokemon-img" src={pokemonImage} alt="Pokemon image"/>
                     </div>
                     <div className="pokemon-textInfo">
-                        <p>Type: {pokemonType}</p>
-                        <p>Weight: {(pokemonInfo.weight*0.10).toFixed(1)} kg</p>
-                        <p>Height: {(pokemonInfo.height * 0.10).toFixed(1)} m</p> 
-                        <p>HP: {pokemonInfo.stats?.[0]?.base_stat}</p>
+                        <p><strong>Type:</strong> {pokemonType}</p>
+                        <p><strong>Weight:</strong> {(pokemonInfo.weight*0.10).toFixed(1)} kg</p>
+                        <p><strong>Height:</strong> {(pokemonInfo.height * 0.10).toFixed(1)} m</p> 
+                        <p><strong>HP:</strong> {pokemonInfo.stats?.[0]?.base_stat}</p>
                     </div>
             </div>
         </>
