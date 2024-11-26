@@ -5,7 +5,7 @@ import icon from "../img/poke-grey-icon.png"
 function PokemonApplication() {
     const [showPokemon, setShowPokemon] = useState(false);
     const [pokemons, setPokemons] = useState([]);
-    const [selectedPokemon, setSelectedPokemon] = useState("bulbasaur");
+    const [selectedPokemon, setSelectedPokemon] = useState("abra");
     const [pokemonInfo, setPokemonInfo] = useState(null);
 
     useEffect(() => {
