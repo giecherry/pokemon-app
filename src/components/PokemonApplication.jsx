@@ -60,9 +60,9 @@ function PokemonApplication() {
             <img src={icon} alt="" style={{width: "50px", height: "50px"}}/>
             <div className="filter-container">
                 <label htmlFor="pokemon-select" style={{marginRight: "5px"}}>Choose a Pokemon: </label>
-                <div className="custom-select">
+                <div>
                     <select id="pokemon-select" onChange={handleSelection}>
-                    {pokemons.map(pokemon => <option key={pokemon.url} value={pokemon.name}>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</option>)}
+                    {pokemons.slice().sort((a, b) => a.name.localeCompare(b.name)).map(pokemon => <option key={pokemon.url} value={pokemon.name}>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</option>)}
                 </select>
                 </div>
                 <button onClick={handleClick}>Show</button>

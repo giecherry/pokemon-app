@@ -166,7 +166,7 @@ select {
   box-sizing: border-box;
   margin: 0;
   border: 1px solid #aaa;
-  box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+  box-shadow: 0 1px 0 1px #0000000a;
   border-radius: .5em;
   background-color: #fff;
 }
@@ -198,7 +198,7 @@ option {
   background-color: #ffffff;
   border-radius: 15px;
   box-sizing: border-box;
-  border: 1.2em solid #9b9b9b;
+  border: 1.2em solid #ffcc00d8;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
@@ -209,12 +209,23 @@ option {
   filter: drop-shadow(0.5px 0.5px 0.5em #6b6b6b);
 }
 
-.pokemon-img {
-  padding: 2rem;
-  margin: 0.5rem;
+.pokemon-type {
   border-radius: 8px;
-  transform: scale(2.7);
+  border: solid 1px transparent;
+  padding: 2px 6px;
+  text-align: center;
+  align-self: center;
+  font-size: 0.8em;
+}
+.pokemon-img {
+  /* padding: 2rem;
+  margin: 0.5rem; */
+  transform: scale(2);
   object-fit: contain;
+}
+.pokemon-img:hover {
+  transform: scale(4);
+  transition: transform 0.2s ease-in-out;
 }
 
 .pokemon-img-container {

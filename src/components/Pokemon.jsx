@@ -42,10 +42,10 @@ function Pokemon({pokemonInfo}) {
             <div className="pokemon-card" style={{background: cardBackground}}>
                     <h1>{pokemonName}</h1>
                     <div className="pokemon-img-container">
-                        <img className="pokemon-img" src={pokemonImage} alt="Pokemon image"/>
+                        <img className="pokemon-img" src={pokemonImage} alt={pokemonName}/>
                     </div>
                     <div className="pokemon-textInfo">
-                        <p><strong>Type:</strong> {pokemonType}</p>
+                        <p><strong>Type:</strong> <span style={{background: cardBackground} } className="pokemon-type">{pokemonType.toUpperCase()}</span></p>
                         <p><strong>Weight:</strong> {(pokemonInfo.weight*0.10).toFixed(1)} kg</p>
                         <p><strong>Height:</strong> {(pokemonInfo.height * 0.10).toFixed(1)} m</p> 
                         <p><strong>HP:</strong> {pokemonInfo.stats?.[0]?.base_stat}</p>
