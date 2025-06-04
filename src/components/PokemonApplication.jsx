@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import Pokemon from "./Pokemon.jsx"
 import icon from "../img/poke-grey-icon.png"
+import HomeBtn from "./HomeBtn.jsx";
 
 function PokemonApplication() {
     const [showPokemon, setShowPokemon] = useState(false);
@@ -70,6 +71,7 @@ function PokemonApplication() {
             </div>
             {showPokemon && pokemonInfo && <Pokemon pokemonInfo={pokemonInfo} />}
         </div>
+        <HomeBtn />
         </>
     )
 }

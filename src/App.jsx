@@ -1,24 +1,21 @@
-import { useState, useEffect } from 'react'
-import PokemonApplication from "./components/PokemonApplication.jsx"
-import './App.css'
-import Logo1 from "./img/pokeball-logo.png"
-import Logo2 from "./img/poke-logo.png"
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import PokemonApplication from './components/PokemonApplication';
+import CollectionPage from './pages/CollectionPage';
+import LoginPage from './pages/LoginPage';
+
 
 function App() {
-
-  const [showPokemonApplication, setShowPokemonApplication] = useState(false)
   return (
     <>
-      {showPokemonApplication===false &&
-      <div className='start-container'>
-        <div className='logo-container'>
-          <img className='logo-img2' src={Logo2} alt='Pokemon'/>
-          <img className='logo-img1' src={Logo1} alt='Pokeball'/>
-        </div>
-        <button className='start-button' onClick={()=>{setShowPokemonApplication(true)}}>Start Pokemon App</button>
-      </div>
-      }
-      {showPokemonApplication && <PokemonApplication/>}
+      <Router>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/browse" element={<PokemonApplication />} />
+          <Route path="/mycollection" element={<CollectionPage />} />
+          <Route path="/LoginPage" element={<LoginPage />} />
+        </Routes>
+      </Router>
     </>
   )
 }
