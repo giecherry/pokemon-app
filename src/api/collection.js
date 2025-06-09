@@ -1,16 +1,54 @@
-import { authorizedFetch } from './client';
+import { authorizedFetch } from "./client";
 
-// Example function: fetch current user’s Pokémon collection
+// Fetch user's Pokémon collection
 export async function getUserCollection() {
-  return await authorizedFetch('/api/collection');
+  return await authorizedFetch("/api/collection");
 }
 
-// Example function: add a Pokémon to wishlist
+// Add a Pokémon to the collection
+export async function addToCollection(pokemonId) {
+  return await authorizedFetch(
+    "/api/collection",
+    {
+      method: "POST",
+      body: JSON.stringify({ pokemonId }),
+    }
+  );
+}
+
+// Remove a Pokémon from the collection
+export async function removeFromCollection(
+  pokemonId
+) {
+  return await authorizedFetch(
+    `/api/collection/${pokemonId}`,
+    {
+      method: "DELETE",
+    }
+  );
+}
+
+// Fetch user's wishlist
+export async function getUserWishlist() {
+  return await authorizedFetch("/api/wishlist");
+}
+
+// Add a Pokémon to the wishlist
 export async function addToWishlist(pokemonId) {
-  return await authorizedFetch('/api/wishlist', {
-    method: 'POST',
+  return await authorizedFetch("/api/wishlist", {
+    method: "POST",
     body: JSON.stringify({ pokemonId }),
   });
 }
 
-// Add more as needed: removeFromWishlist, updateCollection, etc.
+// Remove a Pokémon from the wishlist
+export async function removeFromWishlist(
+  pokemonId
+) {
+  return await authorizedFetch(
+    `/api/wishlist/${pokemonId}`,
+    {
+      method: "DELETE",
+    }
+  );
+}
