@@ -238,6 +238,54 @@ option {
   border-radius: 15px;
 }
 
+.login-page form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 5em 10em;
+  font-size: 1em;
+  font-family: inherit;
+  gap: 1em;
+  }
+.login-page span {
+  font-size: 0.7em;
+}
+.login-page input {
+  width: 100%;
+  padding: 0.5em;
+  border: 4px solid #ff0000;
+  border-radius: 4px;
+  font-size: 1em;
+  background-color: #1a1a1a;
+  color: #fff;
+  box-shadow:
+    0 0 4px #ff0000,
+    inset 0 0 4px #1a1a1a;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.login-page input::placeholder {
+  color: #888;
+}
+
+.login-page input:hover {
+  box-shadow:
+    0 0 6px #ff0000,
+    0 0 10px #ffffff;
+}
+
+.login-page input:focus {
+  border-color: #ffffff;
+  box-shadow:
+    0 0 6px #ff0000,
+    0 0 12px #0051ff,
+    inset 0 0 6px #000000;
+  outline: none;
+}
 
 @media (max-width: 1016px) {
   body {

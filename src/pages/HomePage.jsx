@@ -18,7 +18,10 @@ function HomePage() {
                     <Link to="/mycollection">
                         <button className="start-button">My Collection</button>
                     </Link>
-                    <Link to="/LoginPage">
+                    <Link to="/wishlist">
+                        <button className="start-button">My Wishlist</button>
+                    </Link>
+                    <Link to="/login">
                         <button className="start-button">Login</button>
                     </Link> 
                 </div>
