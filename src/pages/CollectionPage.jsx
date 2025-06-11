@@ -1,9 +1,10 @@
 import HomeBtn from '../components/HomeBtn';
 import React, { useState, useEffect } from "react";
 
-function CollectionPage({ token }) {
+function CollectionPage() {
     const [collection, setCollection] = useState([]);
     const [loading, setLoading] = useState(true);
+    const token = localStorage.getItem("token"); 
 
     useEffect(() => {
         const fetchCollection = async () => {
@@ -12,10 +13,11 @@ function CollectionPage({ token }) {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 const data = await response.json();
-                setCollection(Array.isArray(data) ? data : []); 
-            if (collection.length === 0) {
+                if (data.collection.length === 0) {
                     console.log("Collection is empty or not an array");
                 }
+                setCollection(Array.isArray(data.collection) ? data.collection : []); 
+        
             } catch (error) {
                 console.error("Failed to fetch collection:", error);
                 setCollection([]);

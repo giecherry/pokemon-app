@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react"
-import Pokemon from "./Pokemon.jsx"
-import icon from "../img/poke-grey-icon.png"
+import { useState, useEffect } from "react";
+import Pokemon from "./Pokemon.jsx";
+import icon from "../img/poke-grey-icon.png";
 import HomeBtn from "./HomeBtn.jsx";
 
 function PokemonApplication() {
@@ -8,7 +8,9 @@ function PokemonApplication() {
     const [pokemons, setPokemons] = useState([]);
     const [selectedPokemon, setSelectedPokemon] = useState("abra");
     const [pokemonInfo, setPokemonInfo] = useState(null);
-
+    const [message, setMessage] = useState("");
+    const token = localStorage.getItem("token");
+    
     useEffect(() => {
         const getPokemons = async () => {
             try {
@@ -53,29 +55,89 @@ function PokemonApplication() {
         } catch (error) {
             console.error("Failed to fetch Pokémon details:", error);
         }
-    }
+    };
+
+    const handleAddToWishlist = async () => {
+        if (!pokemonInfo) return;
+
+        try {
+            const response = await fetch("http://localhost:3001/api/pokemon/wishlist", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify({ pokemonId: pokemonInfo.id }),
+            });
+
+            if (response.ok) {
+                setMessage(`${pokemonInfo.name} added to wishlist!`);
+            } else {
+                const errorData = await response.json();
+                setMessage(errorData.error || "Failed to add to wishlist.");
+            }
+        } catch (error) {
+            console.error("Failed to add Pokémon to wishlist:", error);
+            setMessage("An error occurred. Please try again.");
+        }
+    };
+
+    const handleAddToCollection = async () => {
+        if (!pokemonInfo) return;
+
+        try {
+            const response = await fetch("http://localhost:3001/api/pokemon/collection", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify({ pokemonId: pokemonInfo.id }),
+            });
+
+            if (response.ok) {
+                setMessage(`${pokemonInfo.name} added to collection!`);
+            } else {
+                const errorData = await response.json();
+                setMessage(errorData.error || "Failed to add to collection.");
+            }
+        } catch (error) {
+            console.error("Failed to add Pokémon to collection:", error);
+            setMessage("An error occurred. Please try again.");
+        }
+    };
 
     return (
         <>
-        <div className="pokemon-app-container">
-            <img src={icon} alt="" style={{width: "50px", height: "50px"}}/>
-            <div className="filter-container">
-                <label htmlFor="pokemon-select" style={{marginRight: "5px"}}>Choose a Pokemon: </label>
-                <div>
-                    <select id="pokemon-select" onChange={handleSelection}>
-                    {pokemons.slice().sort((a, b) => a.name.localeCompare(b.name)).map(pokemon => <option key={pokemon.url} value={pokemon.name}>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</option>)}
-                </select>
+            <div className="pokemon-app-container">
+                <img src={icon} alt="" style={{ width: "50px", height: "50px" }} />
+                <div className="filter-container">
+                    <label htmlFor="pokemon-select" style={{ marginRight: "5px" }}>Choose a Pokemon: </label>
+                    <div>
+                        <select id="pokemon-select" onChange={handleSelection}>
+                            {pokemons.slice().sort((a, b) => a.name.localeCompare(b.name)).map(pokemon => (
+                                <option key={pokemon.url} value={pokemon.name}>
+                                    {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                    <button onClick={handleClick}>Show</button>
+                    <button onClick={handleRandom}>Random</button>
                 </div>
-                <button onClick={handleClick}>Show</button>
-                <button onClick={handleRandom}>Random</button>
+                {showPokemon && pokemonInfo && (
+                    <div>
+                        <Pokemon pokemonInfo={pokemonInfo} />
+                        <button onClick={handleAddToWishlist}>Add to Wishlist</button>
+                        <button onClick={handleAddToCollection}>Add to Collection</button>
+                    </div>
+                )}
+                {message && <p>{message}</p>}
             </div>
-            {showPokemon && pokemonInfo && <Pokemon pokemonInfo={pokemonInfo} />}
-        </div>
-        <HomeBtn />
+            <HomeBtn />
         </>
-    )
+    );
 }
 
-export default PokemonApplication
-
+export default PokemonApplication;
 

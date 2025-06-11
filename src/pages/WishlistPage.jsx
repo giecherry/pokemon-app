@@ -1,9 +1,11 @@
 import HomeBtn from '../components/HomeBtn';
 import React, { useState, useEffect } from "react";
 
-function WishlistPage({ token }) {
+function WishlistPage() {
     const [wishlist, setWishlist] = useState([]);
     const [loading, setLoading] = useState(true);
+    const token = localStorage.getItem("token"); 
+
 
     useEffect(() => {
         const fetchWishlist = async () => {
@@ -12,10 +14,10 @@ function WishlistPage({ token }) {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 const data = await response.json();
-                setWishlist(Array.isArray(data) ? data : []); 
-            if (wishlist.length === 0) {
+                if (data.wishlist.length === 0) {
                     console.log("Wishlist is empty or not an array");
                 }
+                setWishlist(Array.isArray(data.wishlist) ? data.wishlist : []); 
             } catch (error) {
                 console.error("Failed to fetch wishlist:", error);
                 setWishlist([]);
