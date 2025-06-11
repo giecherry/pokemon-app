@@ -1,19 +1,47 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import HomeBtn from '../components/HomeBtn';
+import React, { useState } from "react"
 
 function SignUp() {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const navigate = useNavigate();
+
+    const handleSignup = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await fetch("http://localhost:3001/api/auth/register", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ email, password }),
+            });
+
+            const data = await response.json();
+            if (response.ok) {
+                alert("Signup successful! Redirecting to login page...");
+                navigate("/login"); 
+            } else {
+                alert(data.error || "Signup failed.");
+            }
+        } catch (error) {
+            alert("An error occurred. Please try again.");
+        }
+    };
+
     return (
         <div className="signup-page">
-            <form>
+            <form onSubmit={handleSignup}>
                 <h1>Welcome!</h1>
                 <h3>Become a member to track favorites, wishlist what you want and organize your collection</h3>
                 <div>
-                    <label htmlFor="username">Username:</label>
-                    <input type="text" id="username" name="username" required />
+                    <label htmlFor="email">E-mail:</label>
+                    <input type="email" id="Email" name="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
                 </div>
                 <div>
                     <label htmlFor="password">Password:</label>
-                    <input type="password" id="password" name="password" required />
+                    <input type="password" id="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
                 </div>
                 <span>Already a member? <Link to="/login">Log in!</Link></span>
                 <button type="submit">Register</button>

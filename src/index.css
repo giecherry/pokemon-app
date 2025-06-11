@@ -91,22 +91,22 @@ button:focus-visible {
   height: 30%;
   width: 30%;
 }
-.logo-img1:hover, .logo-img2:hover, .start-button:hover, home-button:hover {
+.logo-img1:hover, .logo-img2:hover, .start-button:hover, home-button:hover, logout-btn:hover {
   filter: drop-shadow(2px 2px 2em #276ab7);
 }
 .logo-img1:focus,
 .logo-img1:focus-visible, 
-.start-button:focus, home-button:focus {
+.start-button:focus, home-button:focus, logout-btn:focus {
   outline: 4px auto -webkit-focus-ring-color;
 
 }
-.start-button:hover, home-button:hover {
+.start-button:hover, home-button:hover, logout-btn:hover {
   transform: scale(1.1, 1.1);
   transition: transform 0.2s ease-in-out;
   font-weight: bold;
   }
 
-.start-button {
+.start-button, .logout-btn {
   min-width: 15rem;
   border-radius: 8px;
   border: 1px solid transparent;
@@ -253,7 +253,7 @@ option {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: left;
   background-color: #ffffff;
   border-radius: 8px;
   border: 1px solid transparent;
@@ -301,7 +301,7 @@ option {
 .signup-page h3 {
   font-size: 0.7em;
   color: #5a5a5a;
-  max-width: 50%;
+  max-width: 100%;
 }
 
 @media (max-width: 1016px) {

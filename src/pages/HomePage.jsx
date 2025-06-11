@@ -2,8 +2,17 @@ import Logo1 from "../img/pokeball-logo.png"
 import Logo2 from "../img/poke-logo.png"
 import React from "react";
 import { Link } from 'react-router-dom';
+import LogOutBtn from "../components/LogOutBtn";
 
 function HomePage() {
+    function checkLoggedIn() {
+        const token = localStorage.getItem("token");
+        if (token) {
+            return true;
+        } else {
+            return false;
+        }
+    }
     return (
         <>
 
@@ -15,15 +24,20 @@ function HomePage() {
                     <Link to="/browse">
                         <button className="start-button">Browse</button>
                     </Link>
-                    <Link to="/mycollection">
-                        <button className="start-button">My Collection</button>
-                    </Link>
-                    <Link to="/wishlist">
-                        <button className="start-button">My Wishlist</button>
-                    </Link>
+                    {checkLoggedIn() ? (
+                    <>
+                        <Link to="/mycollection">
+                            <button className="start-button">My Collection</button>
+                        </Link>
+                        <Link to="/wishlist">
+                            <button className="start-button">My Wishlist</button>
+                        </Link>
+                        <LogOutBtn/>
+                    </>
+                    ) : 
                     <Link to="/login">
                         <button className="start-button">Log in</button>
-                    </Link> 
+                    </Link> }
                 </div>
         </>
     );
