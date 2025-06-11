@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import HomeBtn from '../components/HomeBtn';
 
 function LoginPage() {
   return (
@@ -15,6 +16,7 @@ function LoginPage() {
         <span>New here? <Link to="/signup">Sign up!</Link></span>
         <button type="submit">Login</button>
       </form>
+      <HomeBtn />
     </div>
   );
 }

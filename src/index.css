@@ -91,22 +91,23 @@ button:focus-visible {
   height: 30%;
   width: 30%;
 }
-.logo-img1:hover, .logo-img2:hover, .start-button:hover {
+.logo-img1:hover, .logo-img2:hover, .start-button:hover, home-button:hover {
   filter: drop-shadow(2px 2px 2em #276ab7);
 }
 .logo-img1:focus,
 .logo-img1:focus-visible, 
-.start-button:focus {
+.start-button:focus, home-button:focus {
   outline: 4px auto -webkit-focus-ring-color;
 
 }
-.start-button:hover {
+.start-button:hover, home-button:hover {
   transform: scale(1.1, 1.1);
   transition: transform 0.2s ease-in-out;
   font-weight: bold;
   }
 
 .start-button {
+  min-width: 15rem;
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 1em 1.8em;
@@ -117,7 +118,17 @@ button:focus-visible {
   align-self: center;
   transition: border-color 0.25s;
 }
-
+.home-button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 1em 1.8em;
+  font-size: 0.7em;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  align-self: center;
+  transition: border-color 0.25s;
+}
 .pokemon-app-container {
   display: flex;
   flex-direction: column;
@@ -238,7 +249,7 @@ option {
   border-radius: 15px;
 }
 
-.login-page form {
+.login-page form, .signup-page form {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -251,10 +262,10 @@ option {
   font-family: inherit;
   gap: 1em;
   }
-.login-page span {
+.login-page span, .signup-page span {
   font-size: 0.7em;
 }
-.login-page input {
+.login-page input, .signup-page input {
   width: 100%;
   padding: 0.5em;
   border: 4px solid #ff0000;
@@ -268,23 +279,29 @@ option {
   transition: box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
-.login-page input::placeholder {
+.login-page input::placeholder , .signup-page input::placeholder {
   color: #888;
 }
 
-.login-page input:hover {
+.login-page input:hover, .signup-page input:hover {
   box-shadow:
     0 0 6px #ff0000,
     0 0 10px #ffffff;
 }
 
-.login-page input:focus {
+.login-page input:focus, .signup-page input:focus {
   border-color: #ffffff;
   box-shadow:
     0 0 6px #ff0000,
     0 0 12px #0051ff,
     inset 0 0 6px #000000;
   outline: none;
+}
+
+.signup-page h3 {
+  font-size: 0.7em;
+  color: #5a5a5a;
+  max-width: 50%;
 }
 
 @media (max-width: 1016px) {

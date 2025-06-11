@@ -22,7 +22,7 @@ function HomePage() {
                         <button className="start-button">My Wishlist</button>
                     </Link>
                     <Link to="/login">
-                        <button className="start-button">Login</button>
+                        <button className="start-button">Log in</button>
                     </Link> 
                 </div>
         </>
