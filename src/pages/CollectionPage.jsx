@@ -68,7 +68,9 @@ function CollectionPage() {
                 <h3>Your collection is empty. Start adding Pokémon to your collection!</h3>
             ) : (
                 <ul>
-                    {collection.map((pokemon) => {
+                    {collection.slice()
+                        .sort((a, b) => a.pokemonId - b.pokemonId)
+                        .map((pokemon) => {
                         const backgroundColor = typeColors[pokemon.types[0]?.toLowerCase()] || "#ffffff";
                         return (
                             <li

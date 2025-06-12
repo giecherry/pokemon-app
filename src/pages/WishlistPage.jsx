@@ -67,7 +67,10 @@ function WishlistPage() {
                     <h3>Your wishlist is empty. Start adding Pokémon to your wishlist!</h3>
                 ) : (
                     <ul>
-                        {wishlist.map((pokemon) => {
+                        {wishlist
+                        .slice()
+                        .sort((a, b) => a.pokemonId - b.pokemonId)
+                        .map((pokemon) => {
                             const backgroundColor = typeColors[pokemon.types[0]?.toLowerCase()] || "#ffffff";
                             return (
                                 <li
