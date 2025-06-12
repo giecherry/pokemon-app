@@ -5,7 +5,7 @@ function HomeBtn() {
     return (
         <>
         <Link to="/">
-            <button className="home-button">Home</button>
+            <button className="home-button"><img src="https://i.imgur.com/Rh1obTr.png" alt="" /></button>
         </Link>
         </>
     );

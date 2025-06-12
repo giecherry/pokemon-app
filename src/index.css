@@ -133,13 +133,22 @@ select:focus-visible {
 .home-button {
   border-radius: 8px;
   border: 1px solid transparent;
-  padding: 1em 1.8em;
+  padding: 0.3em 1em;
   font-size: 0.7em;
   font-weight: 500;
   font-family: inherit;
   cursor: pointer;
   align-self: center;
   transition: border-color 0.25s;
+}
+.home-button img {
+  width: 3em;
+  height: 3em;
+  vertical-align: middle;
+}
+
+.action-buttons {
+  padding: 0.3em 1.8em;
 }
 .pokemon-app-container {
   display: flex;
@@ -203,6 +212,7 @@ option {
 
 .pokemon-textInfo {
   display: flex;
+  min-width: 100%;
   flex-direction: column;
   border-radius: 8px;
   margin: 5px 0px;
@@ -210,6 +220,10 @@ option {
   text-align: left;
   align-self: center;
   font-size: 0.8em;
+}
+.pokemon-textInfo p {
+  background-color: #ffffff49;
+  padding: 0.7em 1.2em;
 }
 
 .pokemon-card {
@@ -339,6 +353,21 @@ option {
   max-width: 100%;
 }
 
+.collection-page, .wishlist-page {
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-family: inherit;
+  margin: 2rem;
+  padding: 2rem;
+  filter: drop-shadow(0.5px 0.5px 0.5em #6b6b6b);
+}
 
 .collection-page ul, .wishlist-page ul {
   list-style: none;

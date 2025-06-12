@@ -11,6 +11,10 @@ function PokemonApplication() {
     const [message, setMessage] = useState("");
     const token = localStorage.getItem("token");
 
+    const checkLoggedIn = () => {
+        return !!token; 
+    };
+
     const { data: wishlist, loading: wishlistLoading, error: wishlistError } = useFetchData(
         "http://localhost:3001/api/pokemon/wishlist",
         token
@@ -153,13 +157,18 @@ function PokemonApplication() {
                 {showPokemon && pokemonInfo && (
                     <div>
                         <Pokemon pokemonInfo={pokemonInfo} />
-                        <button onClick={handleAddToWishlist}>Add to Wishlist</button>
-                        <button onClick={handleAddToCollection}>Add to Collection</button>
+                        {checkLoggedIn() && (
+                            <div className="action-buttons">
+                                <button className="addBtn" onClick={handleAddToWishlist}>Add to Wishlist</button>
+                                <button className="addBtn" onClick={handleAddToCollection}>Add to Collection</button>
+                            </div>
+                        )}
                     </div>
                 )}
                 {message && <p>{message}</p>}
+                <HomeBtn />
             </div>
-            <HomeBtn />
+            
         </>
     );
 }

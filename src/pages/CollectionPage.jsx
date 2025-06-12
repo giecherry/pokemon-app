@@ -84,8 +84,9 @@ function CollectionPage() {
                     })}
                 </ul>
             )}
-        </div>
             <HomeBtn />
+        </div>
+            
         </>
     );
 }

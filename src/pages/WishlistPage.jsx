@@ -82,9 +82,10 @@ function WishlistPage() {
                             );
                         })}
                     </ul>
-                )}    
+                )}  
+                <HomeBtn />  
             </div>
-            <HomeBtn />
+            
         </>
     );
 }
