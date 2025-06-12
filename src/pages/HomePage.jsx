@@ -1,5 +1,3 @@
-import Logo1 from "../img/pokeball-logo.png"
-import Logo2 from "../img/poke-logo.png"
 import React from "react";
 import { Link } from 'react-router-dom';
 import LogOutBtn from "../components/LogOutBtn";
@@ -18,8 +16,8 @@ function HomePage() {
 
                 <div className='start-container'>
                     <div className='logo-container'>
-                        <img className='logo-img2' src={Logo2} alt='Pokemon' />
-                        <img className='logo-img1' src={Logo1} alt='Pokeball' />
+                        <img className='logo-img2' src="https://i.imgur.com/lwSv6Pb.png" alt='Pokemon' />
+                        <img className='logo-img1' src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/1024px-Pok%C3%A9_Ball_icon.svg.png" alt='Pokeball' />
                     </div>
                     <Link to="/browse">
                         <button className="start-button">Browse</button>

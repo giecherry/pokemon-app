@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import Pokemon from "./Pokemon.jsx";
-import icon from "../img/poke-grey-icon.png";
 import HomeBtn from "./HomeBtn.jsx";
 import { useFetchData } from "../hooks/useFetchData";
 
@@ -136,7 +135,7 @@ function PokemonApplication() {
     return (
         <>
             <div className="pokemon-app-container">
-                <img src={icon} alt="" style={{ width: "50px", height: "50px" }} />
+                <img src="https://assets.pokemon.com/static2/_ui/img/chrome/loaders/pokeball_gray.png" alt="" style={{ width: "50px", height: "50px" }} />
                 <div className="filter-container">
                     <label htmlFor="pokemon-select" style={{ marginRight: "5px" }}>Choose a Pokemon: </label>
                     <div>

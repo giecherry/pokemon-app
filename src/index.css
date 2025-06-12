@@ -8,7 +8,7 @@
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
-  background-image: url('./img/poke-background.png');
+  background-image: url('https://assets.pokemon.com/static2/_ui/img/chrome/body_bg.png');
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -26,18 +26,19 @@ a:hover {
 }
 
 body {
-  background-image: url('./img/poke-bg-white.png');
+  background-image: url('https://assets.pokemon.com/static2/_ui/img/chrome/container_bg.png');
   background-color: #ffffff;
   display: flex;
-  place-items: center;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-width: 50vh;
-  min-height: 100vh;
-  margin: 0 15rem;
-  padding: 2rem;
-  color: #242424;
+  width: 100%; /* Ensure full width */
+  max-width: 100%; /* Prevent horizontal overflow */
+  min-height: 100vh; /* Ensure it covers the viewport height */
+  margin: 0 auto; /* Center the body */
+  padding: 2rem; /* Add padding for spacing */
+  box-sizing: border-box; /* Include padding and border in width/height calculations */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 h1 {
@@ -73,6 +74,11 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+select:focus,
+select:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
 .logo-container {
   display: flex;
   flex-direction: column;
@@ -91,7 +97,7 @@ button:focus-visible {
   height: 30%;
   width: 30%;
 }
-.logo-img1:hover, .logo-img2:hover, .start-button:hover, home-button:hover, logout-btn:hover {
+.logo-img1:hover, .start-button:hover, home-button:hover, logout-btn:hover {
   filter: drop-shadow(2px 2px 2em #276ab7);
 }
 .logo-img1:focus,
@@ -138,7 +144,7 @@ button:focus-visible {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
-  font-size: 0,7em;
+  font-size: 0.7em;
   font-weight: 500;
   font-family: inherit;
   margin: 2rem;
@@ -166,19 +172,18 @@ button:focus-visible {
 }
 
 select {
-  display:block;
-  font-size: 0.5 em;
+  font-size: 1em;
   font-family: "Press Start 2P";
   font-weight: 700;
   color: #444;
   line-height: 1.3;
-  padding: .6em 1.4em .5em .8em;
+  padding: 0.6em 1.4em 0.5em 0.8em;
   max-width: 100%;
   box-sizing: border-box;
   margin: 0;
   border: 1px solid #aaa;
   box-shadow: 0 1px 0 1px #0000000a;
-  border-radius: .5em;
+  border-radius: 0.5em;
   background-color: #fff;
 }
 option {
@@ -210,13 +215,13 @@ option {
   border-radius: 15px;
   box-sizing: border-box;
   border: 1.2em solid #ffcc00d8;
-  padding: 0.6em 1.2em;
+  padding: 1rem;
   font-size: 1em;
   font-weight: 500;
   margin: 10px auto;
-  padding: 2rem;
-  min-height: 400px;
-  min-width: 300px;
+  max-width: 90%; 
+  min-height: 300px;
+  min-width: 250px;
   filter: drop-shadow(0.5px 0.5px 0.5em #6b6b6b);
 }
 
@@ -229,8 +234,6 @@ option {
   font-size: 0.8em;
 }
 .pokemon-img {
-  /* padding: 2rem;
-  margin: 0.5rem; */
   transform: scale(2);
   object-fit: contain;
 }
@@ -247,6 +250,17 @@ option {
   margin: 2rem; 
   background-color: #ffffffa5;
   border-radius: 15px;
+  position: relative;
+  overflow: hidden;
+}
+
+.pokemon-img-container img {
+  transition: transform 0.3s ease-in-out;
+}
+
+.pokemon-img-container img:hover {
+  transform: scale(1.2); 
+  z-index: 10; 
 }
 
 .login-page form, .signup-page form {
@@ -306,8 +320,8 @@ option {
 
 @media (max-width: 1016px) {
   body {
-    margin: 0 2rem; 
-    padding: 1rem;
+    margin: 0 auto; /* Center the body for smaller screens */
+    padding: 1rem; /* Adjust padding */
   }
   .logo-container {
     margin: 1rem;
@@ -338,7 +352,9 @@ option {
 
 @media (max-width: 767px) {
   body {
-    margin: 0 1rem;
+    margin: 0 auto; /* Center the body for tablets */
+    padding: 0.5rem; /* Reduce padding */
+    font-size: 14px; /* Adjust font size */
   }
   .logo-img1, .logo-img2 {
     height: 12%;
@@ -358,27 +374,50 @@ option {
     flex-direction: column;
     padding: 5px;
   }
+  .pokemon-app-container {
+    margin: 0.5rem;
+    padding: 0.5rem;
+  }
 }
 
 @media (max-width: 480px) {
-  .logo-container {
-    margin: 0.5rem; 
-  }
-  .start-button {
-    font-size: 0.9em; 
-    padding: 0.5em 1em; 
+  body {
+    margin: 0 auto; /* Center the body for mobile */
+    padding: 0.5rem; /* Further reduce padding */
+    font-size: 12px; /* Adjust font size */
   }
   .pokemon-app-container {
-    padding: 0.5rem; 
+    padding: 0.5rem;
+    margin: 0.5rem;
   }
+
   .pokemon-card {
-    min-width: 180px; 
-    min-height: 220px; 
+    min-width: 180px;
+    min-height: 220px;
+    padding: 0.5rem;
   }
+
   .pokemon-textInfo {
     font-size: 12px;
   }
+
   .pokemon-img-container {
     height: 100px;
+  }
+
+  .start-button,
+  .home-button,
+  .logout-btn {
+    font-size: 0.8em;
+    padding: 0.5em 1em;
+  }
+
+  h1 {
+    font-size: 1.2em;
+  }
+
+  select {
+    font-size: 0.8em;
+    padding: 0.5em;
   }
 }
