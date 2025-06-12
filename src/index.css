@@ -6,7 +6,6 @@
   font-weight: 200;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
   background-image: url('https://assets.pokemon.com/static2/_ui/img/chrome/body_bg.png');
 
@@ -32,23 +31,30 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%; /* Ensure full width */
-  max-width: 100%; /* Prevent horizontal overflow */
-  min-height: 100vh; /* Ensure it covers the viewport height */
-  margin: 0 auto; /* Center the body */
-  padding: 2rem; /* Add padding for spacing */
-  box-sizing: border-box; /* Include padding and border in width/height calculations */
-  overflow-x: hidden; /* Prevent horizontal scrolling */
+  width: 100%; 
+  max-width: 100%; 
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 2rem; 
+  box-sizing: border-box; 
+  overflow-x: hidden; 
 }
 
 h1 {
   font-size: 1.1em;
   line-height: 1.1;
+  color: #000000;
 }
+h3 {
+  font-size: 0.7em;
+  line-height: 1.1;
+  color: #000000;
+}
+
 
 p {
   margin: 0 0 1em;
-  background-color: #ffffff9e;
+  background-color: #00000000;
   border-radius: 20px;
   padding: 0.25em 4em;
   text-align: left;
@@ -97,16 +103,16 @@ select:focus-visible {
   height: 30%;
   width: 30%;
 }
-.logo-img1:hover, .start-button:hover, home-button:hover, logout-btn:hover {
+.logo-img1:hover, .start-button:hover, .home-button:hover, .logout-btn:hover {
   filter: drop-shadow(2px 2px 2em #276ab7);
 }
 .logo-img1:focus,
 .logo-img1:focus-visible, 
-.start-button:focus, home-button:focus, logout-btn:focus {
+.start-button:focus, .home-button:focus, .logout-btn:focus {
   outline: 4px auto -webkit-focus-ring-color;
 
 }
-.start-button:hover, home-button:hover, logout-btn:hover {
+.start-button:hover, .home-button:hover, .logout-btn:hover {
   transform: scale(1.1, 1.1);
   transition: transform 0.2s ease-in-out;
   font-weight: bold;
@@ -202,7 +208,7 @@ option {
   margin: 5px 0px;
   padding: 0px 10px;
   text-align: left;
-  align-self: flex-start;
+  align-self: center;
   font-size: 0.8em;
 }
 
@@ -263,6 +269,21 @@ option {
   z-index: 10; 
 }
 
+.login-page, .signup-page {
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-family: inherit;
+  margin: 2rem;
+  padding: 2rem;
+  filter: drop-shadow(0.5px 0.5px 0.5em #6b6b6b);
+}
 .login-page form, .signup-page form {
   display: flex;
   flex-direction: column;
@@ -318,10 +339,78 @@ option {
   max-width: 100%;
 }
 
+
+.collection-page ul, .wishlist-page ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+.pokemon-list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-image: url('https://assets.pokemon.com/static2/_ui/img/chrome/body_bg.png');
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.pokemon-list-item img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 1rem;
+}
+
+.pokemon-list-item span {
+  font-size: 1em;
+  font-weight: bold;
+  margin-right: auto;
+  color: #ffffff;
+}
+
+.pokemon-list-item button {
+  background-color: transparent;
+  border: none;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #ff0000;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.pokemon-list-item button:hover {
+  transform: scale(1.2);
+}
+
+@media (max-width: 767px) {
+  .pokemon-list-item {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.5rem;
+  }
+
+  .pokemon-list-item img {
+    margin-bottom: 0.5rem;
+  }
+
+  .pokemon-list-item span {
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  .pokemon-list-item button {
+    align-self: flex-end;
+  }
+}
+
 @media (max-width: 1016px) {
   body {
-    margin: 0 auto; /* Center the body for smaller screens */
-    padding: 1rem; /* Adjust padding */
+    margin: 0 auto; 
+    padding: 1rem; 
   }
   .logo-container {
     margin: 1rem;
@@ -352,9 +441,9 @@ option {
 
 @media (max-width: 767px) {
   body {
-    margin: 0 auto; /* Center the body for tablets */
-    padding: 0.5rem; /* Reduce padding */
-    font-size: 14px; /* Adjust font size */
+    margin: 0 auto; 
+    padding: 0.5rem; 
+    font-size: 14px; 
   }
   .logo-img1, .logo-img2 {
     height: 12%;
@@ -382,9 +471,9 @@ option {
 
 @media (max-width: 480px) {
   body {
-    margin: 0 auto; /* Center the body for mobile */
-    padding: 0.5rem; /* Further reduce padding */
-    font-size: 12px; /* Adjust font size */
+    margin: 0 auto; 
+    padding: 0.5rem;
+    font-size: 12px; 
   }
   .pokemon-app-container {
     padding: 0.5rem;

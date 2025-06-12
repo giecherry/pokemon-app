@@ -34,6 +34,7 @@ function LoginPage() {
   return (
     <div className="login-page">
       <form onSubmit={handleLogin}>
+        <h1>Welcome to PokeKari</h1>
         <div>
           <label htmlFor="email">Email:</label>
           <input type="email" id="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
