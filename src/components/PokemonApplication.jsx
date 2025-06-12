@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Pokemon from "./Pokemon.jsx";
 import icon from "../img/poke-grey-icon.png";
 import HomeBtn from "./HomeBtn.jsx";
+import { useFetchData } from "../hooks/useFetchData";
 
 function PokemonApplication() {
     const [showPokemon, setShowPokemon] = useState(false);
@@ -10,7 +11,16 @@ function PokemonApplication() {
     const [pokemonInfo, setPokemonInfo] = useState(null);
     const [message, setMessage] = useState("");
     const token = localStorage.getItem("token");
-    
+
+    const { data: wishlist, loading: wishlistLoading, error: wishlistError } = useFetchData(
+        "http://localhost:3001/api/pokemon/wishlist",
+        token
+    );
+    const { data: collection, loading: collectionLoading, error: collectionError } = useFetchData(
+        "http://localhost:3001/api/pokemon/collection",
+        token
+    );
+
     useEffect(() => {
         const getPokemons = async () => {
             try {
@@ -36,7 +46,7 @@ function PokemonApplication() {
                 const response = await fetch(selectedPokemonData.url);
                 const json = await response.json();
                 setPokemonInfo(json);
-                setShowPokemon(true); 
+                setShowPokemon(true);
             } catch (error) {
                 console.error("Failed to fetch Pokémon details:", error);
             }
@@ -59,6 +69,14 @@ function PokemonApplication() {
 
     const handleAddToWishlist = async () => {
         if (!pokemonInfo) return;
+
+        const wishlistArray = Array.isArray(wishlist?.wishlist) ? wishlist.wishlist : [];
+        const alreadyInWishlist = wishlistArray.some((pokemon) => pokemon.pokemonId === String(pokemonInfo.id));
+
+        if (alreadyInWishlist) {
+            setMessage(`${pokemonInfo.name} is already in your wishlist!`);
+            return;
+        }
 
         try {
             const response = await fetch("http://localhost:3001/api/pokemon/wishlist", {
@@ -84,6 +102,14 @@ function PokemonApplication() {
 
     const handleAddToCollection = async () => {
         if (!pokemonInfo) return;
+
+        const collectionArray = Array.isArray(collection?.collection) ? collection.collection : [];
+        const alreadyInCollection = collectionArray.some((pokemon) => pokemon.pokemonId === String(pokemonInfo.id));
+
+        if (alreadyInCollection) {
+            setMessage(`${pokemonInfo.name} is already in your collection!`);
+            return;
+        }
 
         try {
             const response = await fetch("http://localhost:3001/api/pokemon/collection", {
