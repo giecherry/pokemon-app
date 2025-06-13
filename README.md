@@ -99,6 +99,10 @@ Even though the base project started last year when I was new to React, I comple
 * Proper error handling & input validation
 * Refactor routes and logic into cleaner controllers
 * Optional: switch to SQL for more structured data relations
+* Profile managing routes (change email/password, delete account)
+* Pagination for collection/wishlist endpoints (especially useful for large collections)
+* Automated tests (unit and integration tests for routes)
+* Role-based access control (admin/user roles if needed later)
 
 ### Frontend
 
@@ -106,12 +110,17 @@ Even though the base project started last year when I was new to React, I comple
 * Better evolution display (tree view or visual indicators)
 * More polished UI & better accessibility
 * Dark mode, user preferences, and responsive design
+* Toast notifications for actions (e.g., "Added to collection!")
 
 ### Dream Features
 
 * ✨ AI suggestions based on personal style (I love cute Pokémon!)
 * 📤 Wishlist sharing or trading suggestions
 * 🏷️ Tagging system (rare, shiny, favorites, etc.)
+* 📊 Dashboard with stats: % caught, types collected, generations completed
+* 🧩 Gamification — earn badges for completing types or regions
+* 🖼️ Upload your own card scans or notes per Pokémon (keeping track of rare or special illustration)
+* 💎 Support for browsing multiple illustrations per Pokémon
 
 ---
 
