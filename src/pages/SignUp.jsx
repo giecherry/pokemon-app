@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
-import HomeBtn from '../components/HomeBtn';
 import React, { useState } from "react"
+import Button from '../components/Button';
 
 function SignUp() {
     const [email, setEmail] = useState("");
@@ -44,9 +44,12 @@ function SignUp() {
                     <input type="password" id="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
                 </div>
                 <span>Already a member? <Link to="/login">Log in!</Link></span>
-                <button type="submit">Register</button>
+                <Button type="submit">Register</Button>
             </form>
-            <HomeBtn />
+            <Link to="/">
+                <Button className="home-button" icon="https://i.imgur.com/Rh1obTr.png">
+                </Button>
+            </Link>
         </div>
     );
 }

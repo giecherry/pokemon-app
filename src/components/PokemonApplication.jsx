@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import Pokemon from "./Pokemon.jsx";
-import HomeBtn from "./HomeBtn.jsx";
 import { useFetchData } from "../hooks/useFetchData";
+import Button from "./Button.jsx";
+import { Link } from "react-router-dom";
 
 function PokemonApplication() {
     const [showPokemon, setShowPokemon] = useState(false);
@@ -151,24 +152,34 @@ function PokemonApplication() {
                             ))}
                         </select>
                     </div>
-                    <button onClick={handleClick}>Show</button>
-                    <button onClick={handleRandom}>Random</button>
+                    <Button className="show-button" onClick={handleClick}>
+                        Show
+                    </Button>
+                    <Button className="random-button" onClick={handleRandom}>
+                        Random
+                    </Button>
                 </div>
                 {showPokemon && pokemonInfo && (
                     <div>
                         <Pokemon pokemonInfo={pokemonInfo} />
                         {checkLoggedIn() && (
                             <div className="action-buttons">
-                                <button className="addBtn" onClick={handleAddToWishlist}>Add to Wishlist</button>
-                                <button className="addBtn" onClick={handleAddToCollection}>Add to Collection</button>
+                                <Button className="addBtn" onClick={handleAddToWishlist}>
+                                    Add to Wishlist
+                                </Button>
+                                <Button className="addBtn" onClick={handleAddToCollection}>
+                                    Add to Collection
+                                </Button>
                             </div>
                         )}
                     </div>
                 )}
                 {message && <p>{message}</p>}
-                <HomeBtn />
+                <Link to="/">
+                    <Button className="home-button" icon="https://i.imgur.com/Rh1obTr.png">
+                    </Button>
+                </Link>
             </div>
-            
         </>
     );
 }

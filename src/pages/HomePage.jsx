@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import LogOutBtn from "../components/LogOutBtn";
+import Button from "../components/Button";
 
 function HomePage() {
-    function checkLoggedIn() {
+
+    const checkLoggedIn = () => {
         const token = localStorage.getItem("token");
         if (token) {
             return true;
@@ -11,6 +12,12 @@ function HomePage() {
             return false;
         }
     }
+
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        window.location.href = "/login";
+    };
+    
     return (
         <>
 
@@ -20,21 +27,23 @@ function HomePage() {
                         <img className='logo-img1' src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/1024px-Pok%C3%A9_Ball_icon.svg.png" alt='Pokeball' />
                     </div>
                     <Link to="/browse">
-                        <button className="start-button">Browse</button>
+                        <Button className="start-button">Browse</Button>
                     </Link>
                     {checkLoggedIn() ? (
                     <>
                         <Link to="/mycollection">
-                            <button className="start-button">My Collection</button>
+                            <Button className="start-button">My Collection</Button>
                         </Link>
                         <Link to="/wishlist">
-                            <button className="start-button">My Wishlist</button>
+                            <Button className="start-button">My Wishlist</Button>
                         </Link>
-                        <LogOutBtn/>
+                        <Button className="logout-btn" onClick={handleLogout}>
+                        Log Out
+                        </Button>
                     </>
                     ) : 
                     <Link to="/login">
-                        <button className="start-button">Log in</button>
+                        <Button className="start-button">Log in</Button>
                     </Link> }
                 </div>
         </>

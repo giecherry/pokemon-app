@@ -1,6 +1,8 @@
-import HomeBtn from '../components/HomeBtn';
 import React, { useState, useEffect } from "react";
 import { typeColors } from '../helpers/helpers'; 
+import Button from "../components/Button";
+import { Link } from "react-router-dom";
+
 
 function CollectionPage() {
     const [collection, setCollection] = useState([]);
@@ -63,13 +65,16 @@ function CollectionPage() {
                             >
                                 <img src={pokemon.sprite} alt={pokemon.name} />
                                 <span>#{pokemon.pokemonId} {pokemon.name}</span>
-                                <button onClick={() => handleRemoveFromCollection(pokemon.pokemonId)}>X</button>
+                                <Button className="deleteBtn" onClick={() => handleRemoveFromCollection(pokemon.pokemonId)}>X</Button>
                             </li>
                         );
                     })}
                 </ul>
             )}
-            <HomeBtn />
+            <Link to="/">
+                <Button className="home-button" icon="https://i.imgur.com/Rh1obTr.png">
+                </Button>
+            </Link>
         </div>
             
         </>

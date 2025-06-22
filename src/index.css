@@ -60,7 +60,7 @@ p {
   text-align: left;
 }
 
-button {
+.generic-button {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
@@ -72,12 +72,16 @@ button {
   transition: border-color 0.25s;
   margin: 4px;
 }
-button:hover {
+.generic-button:hover {
   background-color: #ffcc00d8;
 }
-button:focus,
-button:focus-visible {
+.generic-button:focus,
+.generic-button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+.deleteBtn:hover{
+  background-color: transparent;
 }
 
 select:focus,
@@ -414,6 +418,7 @@ option {
 .pokemon-list-item button:hover {
   transform: scale(1.2);
 }
+
 
 @media (max-width: 767px) {
   .pokemon-list-item {
